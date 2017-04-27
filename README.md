@@ -1,11 +1,13 @@
-My App
+Extract UI
 ======
-Describe your app.
+This is the UI App for Extract APIs
 
 Installation
 -
-Give instructions on how to get started with it.
+1. Clone this repo
+2. npm install
+3. bower install
+4. gulp
 
 Usage
 -
-Give documentation on how to use it.
