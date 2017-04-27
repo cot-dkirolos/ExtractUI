@@ -72,7 +72,7 @@
 	<script title="include">
 		$(function () {
 
-			$("#userFullName").html($.cookie("extract.firstName") +" "+$.cookie("extract.lastName")+" (Admin) - " );
+			$("#userFullName").html($.cookie("extract.firstName") + " " + $.cookie("extract.lastName") + " (Admin) - ");
 
 			$('#signoutUtil').on('click', function (e) {
 				e.preventDefault();
@@ -81,6 +81,9 @@
 			});
 
 			$.ajax("/extract/extracts/fire/", {
+				headers: {
+					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
+				},
 				success: function (d) {
 					var newRows = renderRows(d);
 					$("#tblToAddRows").html(newRows);

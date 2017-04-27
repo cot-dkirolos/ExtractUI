@@ -316,6 +316,9 @@
 				toTime: endTime
 			};
 			$.ajax("/extract/extract/try", {
+				headers: {
+					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
+				},
 				method: "POST",
 				contentType: "application/json",
 				data: JSON.stringify(data),
@@ -380,6 +383,9 @@
 				url: getFullURL($("#pwd").val())
 			};
 			$.ajax("/extract/source/try", {
+				headers: {
+					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
+				},
 				method: "POST",
 				contentType: "application/json",
 				data: JSON.stringify(data),
@@ -596,6 +602,9 @@
 			id = (id && id.length >= 3) ? id = id[2] : null;
 			if (group && id) {
 				$.ajax("/extract/extracts/" + group + "/" + id, {
+				headers: {
+					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
+				},
 					success: function (data) {
 						onLoad(data);
 					}
@@ -616,6 +625,9 @@
 			$("#savedMsg").show();
 			$("#savedMsg").html("Saving...");
 			$.ajax("/extract/extracts/" + group + "/" + id, {
+				headers: {
+					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
+				},
 				method: "POST",
 				contentType: "application/json",
 				dataType: "json",
