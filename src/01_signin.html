@@ -74,41 +74,6 @@
 				cotLogin.showLogin();
 			});
 
-
-			function doLogin() {
-				var username = document.getElementById("exampleInputEmail1").value;
-				var password = document.getElementById("exampleInputPassword1").value;
-				console.log("email: " + email + ", Password: " + password);
-
-				$.ajax("https://insideto-secure.toronto.ca/cc_sr_admin_v1/session?user=" + userName + "&pwd=" + password + "&app=extract", {
-					success: function (d) {
-						auth();
-						var newRows = renderRows(d);
-						$("#tblToAddRows").html(newRows);
-					}
-				});
-				if (email == "admin" && password == "admin") {
-					window.location = "?content=02_select.html";
-				}
-			}
-
-
-			function auth(result) {
-				var out = "";
-				var arrayLength = dataArray.length;
-				for (var i = 0; i < arrayLength; i++) {
-					var itm = dataArray[i];
-					if (itm.acl.includes("David.Kirolos")) {
-						out += '' +
-							'<tr><td>' + itm.id + '</td>' +
-							'<td>' + itm.name + '</td><td>' + itm.description + '</td>' +
-							'<td><a href="?content=03_config.html&group=' + itm.group + '&id=' + itm.id + '" class="btn btn-default">' +
-							'<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Configure</a></td></tr>';
-					}
-				}
-				return out;
-			}
-
 		});
 	</script>
 </body>

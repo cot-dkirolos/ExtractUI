@@ -80,7 +80,7 @@
 				window.location = "?content=01_signin.html";
 			});
 
-			$.ajax("http://localhost:8080/extract/extracts/fire/", {
+			$.ajax("/extract/extracts/fire/", {
 				success: function (d) {
 					var newRows = renderRows(d);
 					$("#tblToAddRows").html(newRows);

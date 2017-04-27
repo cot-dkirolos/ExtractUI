@@ -315,7 +315,7 @@
 				fromTime: startTime,
 				toTime: endTime
 			};
-			$.ajax("http://localhost:8080/extract/extract/try", {
+			$.ajax("/extract/extract/try", {
 				method: "POST",
 				contentType: "application/json",
 				data: JSON.stringify(data),
@@ -334,7 +334,7 @@
 			});
 
 			function showResults(result) {
-				$("#resultTitle").html("<a target='_blank' href='http://localhost:8080/extract/extract/try2htmlTable/" + result.id + "'>HTML table link</a>")
+				$("#resultTitle").html("<a target='_blank' href='/extract/extract/try2htmlTable/" + result.id + "'>HTML table link</a>")
 				resp = result.data;
 				$("#resultSQL").html(result.sql);
 				var cols = [];
@@ -379,7 +379,7 @@
 			var data = {
 				url: getFullURL($("#pwd").val())
 			};
-			$.ajax("http://localhost:8080/extract/source/try", {
+			$.ajax("/extract/source/try", {
 				method: "POST",
 				contentType: "application/json",
 				data: JSON.stringify(data),
@@ -595,7 +595,7 @@
 			group = (group && group.length >= 3) ? group = group[2] : null;
 			id = (id && id.length >= 3) ? id = id[2] : null;
 			if (group && id) {
-				$.ajax("http://localhost:8080/extract/extracts/" + group + "/" + id, {
+				$.ajax("/extract/extracts/" + group + "/" + id, {
 					success: function (data) {
 						onLoad(data);
 					}
@@ -615,7 +615,7 @@
 			console.log(d);
 			$("#savedMsg").show();
 			$("#savedMsg").html("Saving...");
-			$.ajax("http://localhost:8080/extract/extracts/" + group + "/" + id, {
+			$.ajax("/extract/extracts/" + group + "/" + id, {
 				method: "POST",
 				contentType: "application/json",
 				dataType: "json",
