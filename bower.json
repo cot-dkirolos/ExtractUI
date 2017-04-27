@@ -1,0 +1,11 @@
+{
+	"name": "app_dashboard",
+	"description": "App Dashboard",
+	"authors": [
+		"James Ngo"
+	],
+	"private": true,
+	"dependencies": {
+		"core": "https://github.com/CityofToronto/corejs.git#master"
+	}
+}
