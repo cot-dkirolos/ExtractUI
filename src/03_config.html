@@ -315,7 +315,7 @@
 				fromTime: startTime,
 				toTime: endTime
 			};
-			$.ajax("/extract/extract/try", {
+			$.ajax(host+"/extract/extract/try", {
 				headers: {
 					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
 				},
@@ -382,7 +382,7 @@
 			var data = {
 				url: getFullURL($("#pwd").val())
 			};
-			$.ajax("/extract/source/try", {
+			$.ajax(host+"/extract/source/try", {
 				headers: {
 					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
 				},
@@ -601,7 +601,7 @@
 			group = (group && group.length >= 3) ? group = group[2] : null;
 			id = (id && id.length >= 3) ? id = id[2] : null;
 			if (group && id) {
-				$.ajax("/extract/extracts/" + group + "/" + id, {
+				$.ajax(host+"/extract/extracts/" + group + "/" + id, {
 				headers: {
 					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
 				},
@@ -624,7 +624,7 @@
 			console.log(d);
 			$("#savedMsg").show();
 			$("#savedMsg").html("Saving...");
-			$.ajax("/extract/extracts/" + group + "/" + id, {
+			$.ajax(host+"/extract/extracts/" + group + "/" + id, {
 				headers: {
 					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
 				},

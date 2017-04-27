@@ -4,7 +4,7 @@
 // 	app.render(function () {}, contentMatch && contentMatch.length >= 3 ? contentMatch[2] : '01_signin.html');
 // });
 
-
+var host = "";
 var cotLogin = null;
 $(function () {
 	var contentMatch = window.location.href.match(/(\?|\&)content\=([^&#]+)/);

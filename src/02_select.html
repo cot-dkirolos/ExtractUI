@@ -40,14 +40,14 @@
 						<th>Description</th>
 						<th>Action</th>
 					</tr>
-				</thead>
-				<tfoot>
-					<tr>
+					<!--<tr>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 						<td><a href="?content=03_config.html" class="btn btn-default"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> New</a></td>
-					</tr>
+					</tr>-->
+				</thead>
+				<tfoot>
 				</tfoot>
 				<tbody id='tblToAddRows'>
 				</tbody>
@@ -80,7 +80,7 @@
 				window.location = "?content=01_signin.html";
 			});
 
-			$.ajax("/extract/extracts/fire/", {
+			$.ajax(host+"/extract/extracts/fire/", {
 				headers: {
 					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
 				},
@@ -95,7 +95,7 @@
 				var arrayLength = dataArray.length;
 				for (var i = 0; i < arrayLength; i++) {
 					var itm = dataArray[i];
-					if (itm.acl.includes($.cookie("extract.cot_uname"))) {
+					if (itm.acl && itm.acl.includes($.cookie("extract.cot_uname"))) {
 						out += '' +
 							'<tr><td>' + itm.id + '</td>' +
 							'<td>' + itm.name + '</td><td>' + itm.description + '</td>' +
