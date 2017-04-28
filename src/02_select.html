@@ -80,9 +80,10 @@
 				window.location = "?content=01_signin.html";
 			});
 
-			$.ajax(host+"/extract/extracts/fire/", {
+			$.ajax({
+				url: host + "/extract/fire/",
 				headers: {
-					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
+					"Authorization": "AuthSession " + $.cookie("extract.sid")
 				},
 				success: function (d) {
 					var newRows = renderRows(d);

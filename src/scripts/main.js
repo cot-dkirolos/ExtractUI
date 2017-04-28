@@ -4,8 +4,16 @@
 // 	app.render(function () {}, contentMatch && contentMatch.length >= 3 ? contentMatch[2] : '01_signin.html');
 // });
 
+// var host = "http://shelby.corp.toronto.ca:9080";
 var host = "";
 var cotLogin = null;
+// QA
+// var cotCcRoot= 'https://was-intra-qa.toronto.ca';
+// PROD
+var cotCcRoot= 'https://insideto-secure.toronto.ca';
+// DEV
+// var cotCcRoot= 'ttps://was-intra-sit.toronto.ca';
+
 $(function () {
 	var contentMatch = window.location.href.match(/(\?|\&)content\=([^&#]+)/);
 	var app = new cc.Extended_CotApp('');
@@ -25,8 +33,7 @@ $(function () {
 function auth() {
 	cotLogin = new cot_login({
 		appName: 'extract',
-		// ccRoot: 'https://was-intra-sit.toronto.ca',
-		ccRoot: 'https://insideto-secure.toronto.ca',
+		ccRoot: cotCcRoot,
 		onLogin: function (result) {
 			// app.render(function () {}, '02_select.html');
 			if (window.location.href.includes('01_signin.html')) {
@@ -34,4 +41,19 @@ function auth() {
 			}
 		}
 	});
+}
+
+if (!String.prototype.includes) {
+  String.prototype.includes = function(search, start) {
+    'use strict';
+    if (typeof start !== 'number') {
+      start = 0;
+    }
+    
+    if (start + search.length > this.length) {
+      return false;
+    } else {
+      return this.indexOf(search, start) !== -1;
+    }
+  };
 }
