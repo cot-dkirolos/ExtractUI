@@ -36,7 +36,7 @@ function auth() {
 		ccRoot: cotCcRoot,
 		onLogin: function (result) {
 			// app.render(function () {}, '02_select.html');
-			if (window.location.href.includes('01_signin.html')) {
+			if (!window.location.href.includes('03_config') && !window.location.href.includes('02_select')) {
 				window.location = "?content=02_select.html";
 			}
 		}

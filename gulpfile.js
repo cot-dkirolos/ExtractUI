@@ -44,7 +44,8 @@ const imageDir = 'img';
 const scriptDir = 'scripts';
 const styleDir = 'styles';
 //where is this app deployed? can be overridden locally in your env file
-const devDeployPath = 'x:\\secure\\docs\\webapps\\app_name\\';
+const devDeployPath = 'C:\\servers\\apache-tomcat-8.5.14\\webapps\\dist\\';
+// const devDeployPath = 'x:\\secure\\docs\\webapps\\app_name\\';
 const qaDeployPath = 'x:\\webas\\lib\\webapps\\secure\\app_name\\';
 //what the aws deploy info?
 const awsRegion = 'us-east-1';
@@ -199,7 +200,8 @@ gulp.task('serve', ['watch'], () => {
 });
 
 //a task to deploy to CoT dev servers
-gulp.task('deploy:dev', ['_deploy_prep'], () => {
+// gulp.task('deploy:dev', ['_deploy_prep'], () => {
+gulp.task('deploy:dev','' , () => {
   let path = process.env['DEV_DEPLOY_PATH'] || devDeployPath;
   del.sync(path, {force: true});
   process.stdout.write('Deploying to ' + path);
@@ -301,6 +303,6 @@ gulp.task('deploy:aws', ['_deploy_prep'], () => {
 //the default task, clean and build the project
 gulp.task('default', () => {
   return new Promise(resolve => {
-    runSequence('clean', 'build', resolve);
+    runSequence('clean', 'build', 'deploy:dev', resolve);
   });
 });
