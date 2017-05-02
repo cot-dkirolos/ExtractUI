@@ -219,8 +219,8 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Query</h3>
 				</div>
-				<!--
-				<div class="panel-body">
+				
+				<!--<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="form-group">
@@ -228,8 +228,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				-->
+				</div>-->
+				
 				<div id='query'></div>
 
 				<div class="panel-footer">
@@ -601,7 +601,8 @@
 			group = (group && group.length >= 3) ? group = group[2] : null;
 			id = (id && id.length >= 3) ? id = id[2] : null;
 			if (group && id) {
-				$.ajax(host+"/extract/extracts/" + group + "/" + id, {
+				// $.ajax(host+"/extract/extracts/" + group + "/" + id, {
+				$.ajax(host+"/extract/" + group + "/" + id, {
 				headers: {
 					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
 				},
@@ -624,7 +625,8 @@
 			console.log(d);
 			$("#savedMsg").show();
 			$("#savedMsg").html("Saving...");
-			$.ajax(host+"/extract/extracts/" + group + "/" + id, {
+			// $.ajax(host+"/extract/extracts/" + group + "/" + id, {
+			$.ajax(host+"/extract/" + group + "/" + id, {
 				headers: {
 					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
 				},
