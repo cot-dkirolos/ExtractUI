@@ -3,65 +3,65 @@
 <html>
 
 <head>
-	<title>Extract Tool</title>
+  <title>Extract Tool</title>
 </head>
 
 <body>
-	<h1>Extract Tool</h1>
+  <h1>Extract Tool</h1>
 
-	<ol id="breadcrumb">
-		<li><a href="?content=02_select.html">Extract Tool</a></li>
-	</ol>
+  <ol id="breadcrumb">
+    <li><a href="?content=02_select.html">Extract Tool</a></li>
+  </ol>
 
-	<p id="utility"><span id="userFullName"></span> <a id="signoutUtil">Sign Out</a></p>
+  <p id="utility"><span id="userFullName"></span> <a id="signoutUtil">Sign Out</a></p>
 
-	<section id="content-top">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Fire Services</h3>
-			</div>
+  <section id="content-top">
 
-			<div class="panel-body">
+    <!--<div id="resultData">
+
+    </div>-->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Divisions</h3>
+      </div>
+
+      <!--<div class="panel-body">
 				<p>Maecenas tristique dapibus tortor nec luctus. Pellentesque ut ante et dui scelerisque pretium eget eu arcu. Proin dignissim
 					eu leo vitae hendrerit.</p>
-			</div>
+			</div>-->
+      <table class="table">
+        <colgroup>
+          <col width="150">
+          <col>
+          <col>
+          <col width="130">
+          <col width="30">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>PM</th>
+            <th>Description</th>
+            <th>Division</th>
+            <th>Action</th>
+          </tr>
 
-			<table class="table">
-				<colgroup>
-					<col width="150">
-					<col>
-					<col>
-					<col width="30">
-				</colgroup>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>PM</th>
-						<th>Description</th>
-						<th>Action</th>
-					</tr>
-					<!--<tr>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td><a href="?content=03_config.html" class="btn btn-default"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> New</a></td>
-					</tr>-->
-				</thead>
-				<tfoot>
-				</tfoot>
-				<tbody id='tblToAddRows'>
-				</tbody>
-			</table>
-		</div>
-	</section>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody id='tblToAddRows'>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-	<!--
+  <!--
 	<section id="content-right">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">Account Information</h3>
 			</div>
-			
+
 			<div class="panel-body">
 				<p>Maecenas tristique dapibus tortor nec luctus. Pellentesque ut ante et dui scelerisque pretium eget eu arcu. Proin dignissim eu leo vitae hendrerit. Phasellus placerat arcu et faucibus finibus. Nunc venenatis ornare metus, at dapibus justo imperdiet sit amet. Cras ac lorem nec felis ullamcorper facilisis ut a mi. Duis sollicitudin urna nec massa ullamcorper venenatis.</p>
 			</div>
@@ -69,45 +69,87 @@
 	</section>
 	-->
 
-	<script title="include">
-		$(function () {
+  <script title="include">
+    $(function () {
 
-			$("#userFullName").html($.cookie("extract.firstName") + " " + $.cookie("extract.lastName") + " (Admin) - ");
+      $("#userFullName").html($.cookie("extract.firstName") + " " + $.cookie("extract.lastName") + " (Admin) - ");
 
-			$('#signoutUtil').on('click', function (e) {
-				e.preventDefault();
-				cotLogin.logout();
-				window.location = "?content=01_signin.html";
-			});
+      $('#signoutUtil').on('click', function (e) {
+        e.preventDefault();
+        cotLogin.logout();
+        window.location = "?content=01_signin.html";
+      });
 
-			$.ajax({
-				url: host + "/extract/fire/",
-				headers: {
-					"Authorization": "AuthSession " + $.cookie("extract.sid")
-				},
-				success: function (d) {
-					var newRows = renderRows(d);
-					$("#tblToAddRows").html(newRows);
-				}
-			});
+      $.ajax({
+        url: host + "/extract/fire/",
+        headers: {
+          "Authorization": "AuthSession " + $.cookie("extract.sid")
+        },
+        success: function (d) {
+          // renderResult(d);
+          var newRows = renderRows(d);
+          $("#tblToAddRows").html(newRows);
+        }
+      });
 
-			function renderRows(dataArray) {
-				var out = "";
-				var arrayLength = dataArray.length;
-				for (var i = 0; i < arrayLength; i++) {
-					var itm = dataArray[i];
-					if (itm.acl && itm.acl.includes($.cookie("extract.cot_uname"))) {
-						out += '' +
-							'<tr><td>' + itm.id + '</td>' +
-							'<td>' + itm.name + '</td><td>' + itm.description + '</td>' +
-							'<td><a href="?content=03_config.html&group=' + itm.group + '&id=' + itm.id + '" class="btn btn-default">' +
-							'<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Configure</a></td></tr>';
-					}
-				}
-				return out;
-			}
-		});
-	</script>
+      function renderResult(dataArray) {
+        var fireOut = "<div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Fire Service</h3></div><table class='table'><colgroup><col width='150'><col><col><col width='30'></colgroup><thead><tr><th>ID</th><th>PM</th><th>Description</th><th>Action</th></tr> </thead><tfoot></tfoot><tbody id='fireToAddRows'>[FIRE_DATA]</tbody> </table></div>";
+        var courtOut = "<div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Court Service</h3></div><table class='table'><colgroup><col width='150'><col><col><col width='30'></colgroup><thead><tr><th>ID</th><th>PM</th><th>Description</th><th>Action</th></tr> </thead><tfoot></tfoot><tbody id='courtToAddRows'>[COURT_DATA]</tbody> </table></div>";
+        var fireExist = false;
+        var courtExist = false;
+        var fireRows = "";
+        var courtRows = "";
+        var arrayLength = dataArray.length;
+        for (var i = 0; i < arrayLength; i++) {
+          var itm = dataArray[i];
+          if (itm.acl && itm.acl.includes($.cookie("extract.cot_uname"))) {
+            if (itm.division.includes("Fire")) {
+              fireExist = true;
+              fireRows += '' +
+                '<tr><td>' + itm.id + '</td>' +
+                '<td>' + itm.name + '</td><td>' + itm.description + '</td>' +
+                '<td><a href="?content=03_config.html&group=' + itm.group + '&id=' + itm.id + '" class="btn btn-default">' +
+                '<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Configure</a></td></tr>';
+            } else {
+              courtExist = true;
+              courtRows += '' +
+                '<tr><td>' + itm.id + '</td>' +
+                '<td>' + itm.name + '</td><td>' + itm.description + '</td>' +
+                '<td><a href="?content=03_config.html&group=' + itm.group + '&id=' + itm.id + '" class="btn btn-default">' +
+                '<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Configure</a></td></tr>';
+            }
+          }
+        }
+        var out = "";
+        if (fireExist){
+          fireOut = fireOut.replace("[FIRE_DATA]",fireRows);
+          out += '' + fireOut;
+        }
+        if (courtRows){
+          courtOut = courtOut.replace("[COURT_DATA]",courtRows);
+          out += '' + courtOut;
+        }
+
+        $("#resultData").html(out);
+      }
+
+      function renderRows(dataArray) {
+        var out = "";
+        var arrayLength = dataArray.length;
+        for (var i = 0; i < arrayLength; i++) {
+          var itm = dataArray[i];
+          if (itm.acl && itm.acl.includes($.cookie("extract.cot_uname"))) {
+            out += '' +
+              '<tr><td>' + itm.id + '</td>' +
+              '<td>' + itm.name + '</td><td>' + itm.description + '</td>' + '<td>' + itm.division + '</td>' +
+              '<td><a href="?content=03_config.html&group=' + itm.group + '&id=' + itm.id + '" class="btn btn-default">' +
+              '<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Configure</a></td></tr>';
+          }
+        }
+        return out;
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -3,224 +3,226 @@
 <html>
 
 <head>
-	<title>Extract Tool Configuration</title>
+  <title>Extract Tool Configuration</title>
 
-	<style>
-		#query {
-			width: 100%;
-			height: 150px;
-		}
-		
-		#editor {
-			position: relative;
-			/*  width: 500px; */
-			height: 400px;
-			resize: vertical;
-			overflow: auto;
-		}
-		
-		#queryBorder {
-			border-width: 1px;
-			border-style: solid !important;
-			border: #ccc;
-		}
-		
-		#chk {
-			height: 45;
-		}
-		
-		#queryButton {
-			width: 120px;
-		}
-		
-		#conTitle {
-			font-size: 11px;
-		}
-		
-		SPAN.badResultCode {
-			color: red;
-		}
-		
-		SPAN.goodResultCode {
-			color: green;
-		}
-		
-		#resultSQL {
-			border-style: solid !important;
-			border-color: gray;
-			font-size: 8px;
-		}
-	</style>
+  <style>
+    #query {
+      width: 100%;
+      height: 150px;
+    }
+
+    #editor {
+      position: relative;
+      /*  width: 500px; */
+      height: 400px;
+      resize: vertical;
+      overflow: auto;
+    }
+
+    #queryBorder {
+      border-width: 1px;
+      border-style: solid !important;
+      border: #ccc;
+    }
+
+    #chk {
+      height: 45;
+    }
+
+    #queryButton {
+      width: 120px;
+    }
+
+    #conTitle {
+      font-size: 11px;
+    }
+
+    SPAN.badResultCode {
+      color: red;
+    }
+
+    SPAN.goodResultCode {
+      color: green;
+    }
+
+    #resultSQL {
+      border-style: solid !important;
+      border-color: gray;
+      font-size: 8px;
+    }
+  </style>
 </head>
 
 <body>
-	<h1>Extract Tool Configuration</h1>
+  <h1>Extract Tool Configuration</h1>
 
-	<ol id="breadcrumb">
-		<li><a href="?content=02_select.html">Extract Tool</a></li>
-		<li><a href="?content=03_config.html">Configuration</a></li>
-	</ol>
+  <ol id="breadcrumb">
+    <li><a href="?content=02_select.html">Extract Tool</a></li>
+    <li><a href="?content=03_config.html">Configuration</a></li>
+  </ol>
 
-	<p id="utility"><span id="userFullName"></span> <a id="signoutUtil">Sign Out</a></p>
+  <p id="utility"><span id="userFullName"></span> <a id="signoutUtil">Sign Out</a></p>
 
-	<section id="content-top">
-		<form>
-			<p class="text-right">
-				<span id='savedMsg'></span>
-				<button class="btn btn-success" id='saveBtn' style="margin: 0;" type="button"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Save</button>
-				<!-- <button class="btn btn-danger" style="margin: 0;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button> -->
-			</p>
+  <section id="content-top">
+    <form>
+      <p class="text-right">
+        <span id='savedMsg'></span>
+        <button class="btn btn-success" id='saveBtn' style="margin: 0;" type="button"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Save</button>
+        <!-- <button class="btn btn-danger" style="margin: 0;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button> -->
+      </p>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Extract Meta-data</h3>
-				</div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Extract Meta-data</h3>
+        </div>
 
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<div class="form-group">
-								<label for="idField">PMID</label>
-								<input type="text" class="form-control" id="idField" placeholder="">
-							</div>
-						</div>
-						<div class="col-xs-12 col-md-9">
-							<div class="form-group">
-								<label for="nameField">Name</label>
-								<input type="text" class="form-control" id="nameField" placeholder="">
-							</div>
-						</div>
-					</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-md-3">
+              <div class="form-group">
+                <label for="idField">PMID</label>
+                <input type="text" class="form-control" id="idField" placeholder="">
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-9">
+              <div class="form-group">
+                <label for="nameField">Name</label>
+                <input type="text" class="form-control" id="nameField" placeholder="">
+              </div>
+            </div>
+          </div>
 
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="form-group">
-								<label for="descField">Description</label>
-								<textarea id="descField"></textarea>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="descField">Description</label>
+                <textarea id="descField"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Connection<span id='conTitle'></span></h3>
-				</div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Connection<span id='conTitle'></span></h3>
+        </div>
 
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="form-group">
-								<label for="connectionType">Connection Type</label>
-								<select id="connectionType" class="form-control">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="connectionType">Connection Type</label>
+                <select id="connectionType" class="form-control">
 									<option value="excelsheet">Excel-sheets on NetShare</option>
 									<option value="sqlserver">SQL Server</option>
 									<option value="oracle" selected>Oracle</option>
 								</select>
-							</div>
-						</div>
-					</div>
+              </div>
+            </div>
+          </div>
 
-					<div id="excelsheet">
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="form-group">
-									<label for="excelsheet_folder">Folder</label>
-									<input id="excelsheet_folder" name="excelsheet_folder" type="text" class="form-control" value="/HOME/jmacedo/EPM_datadrops/">
-								</div>
-							</div>
-						</div>
-					</div>
+          <div id="excelsheet">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="excelsheet_folder">Folder</label>
+                  <input id="excelsheet_folder" name="excelsheet_folder" type="text" class="form-control" value="/HOME/jmacedo/EPM_datadrops/">
+                </div>
+              </div>
+            </div>
+          </div>
 
-					<!-- SQL SERVER -->
+          <!-- SQL SERVER -->
 
-					<div id="sqlserver">
-						<div class="row">
-							<div class="col-xs-4">
-								<div class="form-group">
-									<label for="sqlserver_hostname">Host Name</label>
-									<input id="sqlserver_hostname" name="sqlserver_hostname" type="text" class="form-control" value="schrfm4">
-								</div>
-							</div>
+          <div id="sqlserver">
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="sqlserver_hostname">Host Name</label>
+                  <input id="sqlserver_hostname" name="sqlserver_hostname" type="text" class="form-control" value="schrfm4">
+                </div>
+              </div>
 
-							<div class="col-xs-4">
-								<div class="form-group">
-									<label for="sqlserver_port">Port</label>
-									<input id="sqlserver_port" name="sqlserver_port" type="text" class="form-control" value="1433">
-								</div>
-							</div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="sqlserver_port">Port</label>
+                  <input id="sqlserver_port" name="sqlserver_port" type="text" class="form-control" value="1433">
+                </div>
+              </div>
 
-							<div class="col-xs-4">
-								<div class="form-group">
-									<label for="sqlserver_databasename">Database Name</label>
-									<input id="sqlserver_databasename" name="sqlserver_databasename" type="text" class="form-control" value="development">
-								</div>
-							</div>
-						</div>
-					</div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="sqlserver_databasename">Database Name</label>
+                  <input id="sqlserver_databasename" name="sqlserver_databasename" type="text" class="form-control" value="development">
+                </div>
+              </div>
+            </div>
+          </div>
 
-					<!-- ORACLE -->
+          <!-- ORACLE -->
 
-					<div id="oracle">
-						<div class="row">
-							<div class="col-xs-4">
-								<div class="form-group">
-									<label for="oracle_hostname">Host Name</label>
-									<input id="oracle_hostname" name="oracle_hostname" type="text" class="form-control" value="sunrise.corp.toronto.ca">
-								</div>
-							</div>
+          <div id="oracle">
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="oracle_hostname">Host Name</label>
+                  <input id="oracle_hostname" name="oracle_hostname" type="text" class="form-control" value="sunrise.corp.toronto.ca">
+                </div>
+              </div>
 
-							<div class="col-xs-4">
-								<div class="form-group">
-									<label for="oracle_port">Port</label>
-									<input id="oracle_port" name="oracle_port" type="text" class="form-control" value="1521">
-								</div>
-							</div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="oracle_port">Port</label>
+                  <input id="oracle_port" name="oracle_port" type="text" class="form-control" value="1521">
+                </div>
+              </div>
 
-							<div class="col-xs-4">
-								<div class="form-group">
-									<label for="oracle_servicename">Service Name</label>
-									<input id="oracle_servicename" name="oracle_servicename" type="text" class="form-control" value="COTAPPDV">
-								</div>
-							</div>
-						</div>
-					</div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="oracle_servicename">Service Name</label>
+                  <input id="oracle_servicename" name="oracle_servicename" type="text" class="form-control" value="COTAPPDV">
+                </div>
+              </div>
+            </div>
+          </div>
 
-					<!-- COMMON -->
+          <!-- COMMON -->
 
-					<div class="row">
-						<div class="col-xs-4">
-							<div class="form-group">
-								<label for="user">User</label>
-								<input id="user" name="user" type="text" class="form-control" value="IBMEFXF_USER" size="35">
-							</div>
-						</div>
+          <div class="row">
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label for="user">User</label>
+                <input id="user" name="user" type="text" class="form-control" value="IBMEFXF_USER" size="35">
+              </div>
+            </div>
 
-						<div class="col-xs-4">
-							<div class="form-group">
-								<label for="pwd">Password</label>
-								<input type='password' id='pwd' name="pwd" type="text" class="form-control" value="wm4eform" size="35">
-							</div>
-						</div>
-					</div>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label for="pwd">Password</label>
+                <input type='password' id='pwd' name="pwd" type="text" class="form-control" value="wm4eform" size="35">
+              </div>
+            </div>
+          </div>
 
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="form-group">
-								<button type="button" id="chk" class="btn btn-default" style="margin: 0;">Test Connection</button> <span id="connTestResult"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <button type="button" id="chk" class="btn btn-default" style="margin: 0;">Test Connection</button>
+                <span
+                  id="connTestResult"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Query</h3>
-				</div>
-				
-				<!--<div class="panel-body">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Query</h3>
+        </div>
+
+        <!--<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="form-group">
@@ -229,216 +231,217 @@
 						</div>
 					</div>
 				</div>-->
-				
-				<div id='query'></div>
 
-				<div class="panel-footer">
-					&nbsp;
-				</div>
-			</div>
+        <div id='query'></div>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Test Configuration</h3>
-				</div>
+        <div class="panel-footer">
+          &nbsp;
+        </div>
+      </div>
 
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-12 col-md-4">
-							<div class="form-group">
-								<label for="timePeriod">Period</label>
-								<Select id="timePeriod" class="form-control"><option value="M">Months</option><option value="Q">Quarters</option><option value="D">Days</option></Select>
-							</div>
-						</div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Test Configuration</h3>
+        </div>
 
-						<div class="col-xs-12 col-md-4">
-							<div class="form-group">
-								<label for="startTime">Start</label>
-								<input id='startTime' class="form-control" placeholder="20160101" value="20160101" size=8>
-							</div>
-						</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-md-4">
+              <div class="form-group">
+                <label for="timePeriod">Period</label>
+                <Select id="timePeriod" class="form-control"><option value="M">Months</option><option value="Q">Quarters</option><option value="D">Days</option></Select>
+              </div>
+            </div>
 
-						<div class="col-xs-12 col-md-4">
-							<div class="form-group">
-								<label for="exampleInputEmail1">End</label>
-								<input id='endTime' class="form-control" placeholder="20161231" value="20161231" size=8>
-							</div>
-						</div>
+            <div class="col-xs-12 col-md-4">
+              <div class="form-group">
+                <label for="startTime">Start</label>
+                <input id='startTime' class="form-control" placeholder="20160101" value="20160101" size=8>
+              </div>
+            </div>
 
-						<div class="col-xs-12">
-							<div class="form-group">
-								<button id='queryButton' class="btn btn-default" type='button' style="margin: 0;">Test Extract</button>
-							</div>
-						</div>
-					</div>
-				</div>
+            <div class="col-xs-12 col-md-4">
+              <div class="form-group">
+                <label for="exampleInputEmail1">End</label>
+                <input id='endTime' class="form-control" placeholder="20161231" value="20161231" size=8>
+              </div>
+            </div>
 
-				<pre id='resultSQL' style="margin-bottom: 0;"></pre>
-			</div>
+            <div class="col-xs-12">
+              <div class="form-group">
+                <button id='queryButton' class="btn btn-default" type='button' style="margin: 0;">Extract</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-			<div id="resultTitle"></div>
-			<div id="result"></div>
+        <pre id='resultSQL' style="margin-bottom: 0;"></pre>
+      </div>
 
-			<!--<p class="text-right">
+      <div id="resultTitle"></div>
+      <div id="result"></div>
+
+      <!--<p class="text-right">
 				<button class="btn btn-success" style="margin: 0;"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Save</button>
 				<button class="btn btn-danger" style="margin: 0;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
 			</p>-->
-		</form>
+    </form>
 
-	</section>
+  </section>
 
-	<script title="include">
+  <script title="include">
+    $(function () {
+      $("#userFullName").html($.cookie("extract.firstName") + " " + $.cookie("extract.lastName") + " (Admin) - ");
+    });
 
-		$(function () {
-			$("#userFullName").html($.cookie("extract.firstName") +" "+$.cookie("extract.lastName")+" (Admin) - " );
-		});
+    $('#signoutUtil').on('click', function (e) {
+      e.preventDefault();
+      cotLogin.logout();
+      window.location = "?content=01_signin.html";
+    });
 
-		$('#signoutUtil').on('click', function (e) {
-			e.preventDefault();
-			cotLogin.logout();
-			window.location = "?content=01_signin.html";
-		});
+    function query() {
 
-		function query() {
+      $("#resultTitle").html("");
+      $("#result").html("<img src='ajax_loader.gif'>");
+      var timePeriod = $("#timePeriod").val();
+      var url = getFullURL($("#pwd").val());
+      var endTime = $("#endTime").val();
+      var startTime = $("#startTime").val();
+      var query = editor.getValue();
+      var data = {
+        url: url,
+        query: query,
+        timePeriod: timePeriod,
+        fromTime: startTime,
+        toTime: endTime
+      };
+      // $.ajax(host+"/extract/extract/try", {
+      $.ajax(host + "/extract/try", {
+        headers: {
+          'Authorization': 'AuthSession ' + $.cookie("extract.sid")
+        },
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (resp) {
+          //alert(JSON.stringify(resp));
+          $("#result").html("");
+          showResults(resp);
 
-			$("#resultTitle").html("");
-			$("#result").html("<img src='ajax_loader.gif'>");
-			var timePeriod = $("#timePeriod").val();
-			var url = getFullURL($("#pwd").val());
-			var endTime = $("#endTime").val();
-			var startTime = $("#startTime").val();
-			var query = editor.getValue();
-			var data = {
-				url: url,
-				query: query,
-				timePeriod: timePeriod,
-				fromTime: startTime,
-				toTime: endTime
-			};
-			$.ajax(host+"/extract/extract/try", {
-				headers: {
-					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
-				},
-				method: "POST",
-				contentType: "application/json",
-				data: JSON.stringify(data),
-				success: function (resp) {
-					//alert(JSON.stringify(resp));
-					$("#result").html("");
-					showResults(resp);
+        },
+        error: function (resp) {
+          //alert(JSON.stringify(resp));
+          $("#result").html("Unknown error, please try again later.");
+          showResults(resp);
 
-				},
-				error: function (resp) {
-					//alert(JSON.stringify(resp));
-					$("#result").html("Unknown error, please try again later.");
-					showResults(resp);
+        }
+      });
 
-				}
-			});
-
-			function showResults(result) {
-				$("#resultTitle").html("<a target='_blank' href='/extract/extract/try2htmlTable/" + result.id + "'>HTML table link</a>")
-				resp = result.data;
-				$("#resultSQL").html(result.sql);
-				var cols = [];
-				var colHeads = [];
-				var colsCnt = 0;
-				for (var p in resp[0])
-					if (resp[0].hasOwnProperty(p)) {
-						colHeads[colsCnt] = p;
-						cols[colsCnt] = {
-							data: p
-						};
-						colsCnt++;
-					}
+      function showResults(result) {
+        $("#resultTitle").html("<a target='_blank' href='/extract/try2htmlTable/" + result.id + "'>HTML table link</a>")
+        resp = result.data;
+        $("#resultSQL").html(result.sql);
+        var cols = [];
+        var colHeads = [];
+        var colsCnt = 0;
+        for (var p in resp[0])
+          if (resp[0].hasOwnProperty(p)) {
+            colHeads[colsCnt] = p;
+            cols[colsCnt] = {
+              data: p,
+              readOnly: true
+            };
+            colsCnt++;
+          }
 
 
-				var HOT = new Handsontable(document.getElementById("result"), {
-					data: resp,
-					manualColumnResize: true,
-					colHeaders: colHeads,
-					columns: cols
-				});
+        var HOT = new Handsontable(document.getElementById("result"), {
+          data: resp,
+          manualColumnResize: true,
+          colHeaders: colHeads,
+          columns: cols
+        });
 
-			}
-			return false;
-		}
-		var editor = null;
+      }
+      return false;
+    }
+    var editor = null;
 
-		function renderSQLEditor(value) {
-			editor = ace.edit("query");
-			editor.setOptions({
-				fontFamily: "courier",
-				fontSize: "12pt"
-			});
-			//editor.setTheme("ace/theme/monokai");
-			editor.getSession().setMode("ace/mode/sql");
-			//editor.setAutoScrollEditorIntoView(true);
-			editor.setValue(value);//"SELECT sr_type_id, payment_method_code, PAYMENT_INITIATE_TIMESTAMP, \nto_number(payment_total) as payment_total__tosum\n FROM IBMEFXF_DBA.COT_SR_PAYMENT WHERE PAYMENT_STATUS='Paid'");
-		}
+    function renderSQLEditor(value) {
+      editor = ace.edit("query");
+      editor.setOptions({
+        fontFamily: "courier",
+        fontSize: "12pt"
+      });
+      //editor.setTheme("ace/theme/monokai");
+      editor.getSession().setMode("ace/mode/sql");
+      //editor.setAutoScrollEditorIntoView(true);
+      editor.setValue(value);//"SELECT sr_type_id, payment_method_code, PAYMENT_INITIATE_TIMESTAMP, \nto_number(payment_total) as payment_total__tosum\n FROM IBMEFXF_DBA.COT_SR_PAYMENT WHERE PAYMENT_STATUS='Paid'");
+    }
 
-		function validateURL() {
-			refreshConStr();
-			var data = {
-				url: getFullURL($("#pwd").val())
-			};
-			$.ajax(host+"/extract/source/try", {
-				headers: {
-					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
-				},
-				method: "POST",
-				contentType: "application/json",
-				data: JSON.stringify(data),
-				success: function (resp) {
-					//alert(JSON.stringify(resp));
-					if (resp.error) {
-						$("#connTestResult").html("<span class='badResultCode'>" + resp.error + "</span>");
-					} else {
-						$("#connTestResult").html("<span class='goodResultCode'>Valid " + resp.type + " connection URL.</span>");
-					}
+    function validateURL() {
+      refreshConStr();
+      var data = {
+        url: getFullURL($("#pwd").val())
+      };
+      $.ajax(host + "/extract/source/try", {
+        headers: {
+          'Authorization': 'AuthSession ' + $.cookie("extract.sid")
+        },
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (resp) {
+          //alert(JSON.stringify(resp));
+          if (resp.error) {
+            $("#connTestResult").html("<span class='badResultCode'>" + resp.error + "</span>");
+          } else {
+            $("#connTestResult").html("<span class='goodResultCode'>Valid " + resp.type + " connection URL.</span>");
+          }
 
-				},
-				error: function (resp) {
-					//alert(JSON.stringify(resp));
-					$("#connTestResult").html("<span class='badResultCode'>Error: " + resp.error + "</span>");
-				}
-			});
-		}
+        },
+        error: function (resp) {
+          //alert(JSON.stringify(resp));
+          $("#connTestResult").html("<span class='badResultCode'>Error: " + resp.error + "</span>");
+        }
+      });
+    }
 
-		function getFullURL(withPwd) {
-			var url;
-			var user = $("#user").val();
-			var pwd = withPwd;
+    function getFullURL(withPwd) {
+      var url;
+      var user = $("#user").val();
+      var pwd = withPwd;
 
-			switch ($('#connectionType').val()) {
-				case 'excelsheet':
-					url = 'excel:smb://netshare.toronto.ca' + $('#excelsheet_folder').val();
-					if (user.length > 0 && pwd.length > 0) {
-						var idx = "excel:smb://".length;
-						url = url.substring(0, idx) + user + ":" + pwd + "@" + url.substring(idx);
-					}
-					break;
+      switch ($('#connectionType').val()) {
+        case 'excelsheet':
+          url = 'excel:smb://netshare.toronto.ca' + $('#excelsheet_folder').val();
+          if (user.length > 0 && pwd.length > 0) {
+            var idx = "excel:smb://".length;
+            url = url.substring(0, idx) + user + ":" + pwd + "@" + url.substring(idx);
+          }
+          break;
 
-				case 'sqlserver':
-					url = 'jdbc:sqlserver://' + $('#sqlserver_hostname').val() + ':' + $('#sqlserver_port').val() + ';databaseName=' + $('#sqlserver_databasename').val();
-					if (user.length > 0 && pwd.length > 0) {
-						url = url + ";user=" + user + ";password=" + pwd;
-					}
-					break;
+        case 'sqlserver':
+          url = 'jdbc:sqlserver://' + $('#sqlserver_hostname').val() + ':' + $('#sqlserver_port').val() + ';databaseName=' + $('#sqlserver_databasename').val();
+          if (user.length > 0 && pwd.length > 0) {
+            url = url + ";user=" + user + ";password=" + pwd;
+          }
+          break;
 
-				case 'oracle':
-					url = 'jdbc:oracle:thin:' + $('#oracle_hostname').val() + ':' + $('#oracle_port').val() + '/' + $('#oracle_servicename').val();
-					if (user.length > 0 && pwd.length > 0) {
-						var idx = "jdbc:oracle:thin:".length;
-						url = url.substring(0, idx) + user + "/" + pwd + "@" + url.substring(idx);
-					}
-			}
+        case 'oracle':
+          url = 'jdbc:oracle:thin:' + $('#oracle_hostname').val() + ':' + $('#oracle_port').val() + '/' + $('#oracle_servicename').val();
+          if (user.length > 0 && pwd.length > 0) {
+            var idx = "jdbc:oracle:thin:".length;
+            url = url.substring(0, idx) + user + "/" + pwd + "@" + url.substring(idx);
+          }
+      }
 
 			/*
 			var url = $("#url").val();
 			var user = $("#user").val();
 			var pwd = withPwd;
-			
+
 			if (user.length > 0 && pwd.length > 0) {
 				if (url.startsWith("jdbc:oracle:thin:")) {
 					var idx = "jdbc:oracle:thin:".length;
@@ -457,193 +460,193 @@
 			}
 			*/
 
-			return url;
-		}
+      return url;
+    }
 
-		function test() {
-			alert(getFullURL($("#pwd").val()));
-		}
+    function test() {
+      alert(getFullURL($("#pwd").val()));
+    }
 
-		function refreshConStr() {
-			$("#conTitle").html(" - " + getFullURL("******"));
-		}
+    function refreshConStr() {
+      $("#conTitle").html(" - " + getFullURL("******"));
+    }
 
-		$(function () {
-			$("#queryButton").click(query);
-			$("#chk").click(validateURL);
-			$("#url").change();
+    $(function () {
+      $("#queryButton").click(query);
+      $("#chk").click(validateURL);
+      $("#url").change();
 
-			$('#connectionType').on('change', function (e) {
-				switch ($(this).val()) {
-					case 'excelsheet':
-						$('#excelsheet').show();
-						$('#sqlserver').hide();
-						$('#oracle').hide();
-						break;
+      $('#connectionType').on('change', function (e) {
+        switch ($(this).val()) {
+          case 'excelsheet':
+            $('#excelsheet').show();
+            $('#sqlserver').hide();
+            $('#oracle').hide();
+            break;
 
-					case 'sqlserver':
-						$('#excelsheet').hide();
-						$('#sqlserver').show();
-						$('#oracle').hide();
-						break;
+          case 'sqlserver':
+            $('#excelsheet').hide();
+            $('#sqlserver').show();
+            $('#oracle').hide();
+            break;
 
-					case 'oracle':
-						$('#excelsheet').hide();
-						$('#sqlserver').hide();
-						$('#oracle').show();
-				}
-			});
+          case 'oracle':
+            $('#excelsheet').hide();
+            $('#sqlserver').hide();
+            $('#oracle').show();
+        }
+      });
 
-			$('#connectionType').trigger('change');
+      $('#connectionType').trigger('change');
 
 
-			var st = new Pikaday({
-				field: $("#startTime")[0],
-				format: 'YYYYMMDD',
-			});
+      var st = new Pikaday({
+        field: $("#startTime")[0],
+        format: 'YYYYMMDD',
+      });
 
-			var et = new Pikaday({
-				field: $("#endTime")[0],
-				format: 'YYYYMMDD',
-			});
+      var et = new Pikaday({
+        field: $("#endTime")[0],
+        format: 'YYYYMMDD',
+      });
 
-			loadSavedExtract(function (data) {
-				if (data.connection) {
-					parseAndSetConnection(data.connection);
-				}
-				$("#idField").val(data.id);
-				$("#nameField").val(data.name);
-				$("#descField").val(data.description);
-				renderSQLEditor(data.query ? data.query : "SELECT * FROM theviewtoquery");
-			});
+      loadSavedExtract(function (data) {
+        if (data.connection) {
+          parseAndSetConnection(data.connection);
+        }
+        $("#idField").val(data.id);
+        $("#nameField").val(data.name);
+        $("#descField").val(data.description);
+        renderSQLEditor(data.query ? data.query : "SELECT * FROM theviewtoquery");
+      });
 
-			$("#saveBtn").click(saveExtract);
-		});
+      $("#saveBtn").click(saveExtract);
+    });
 
-		function parseAndSetConnection(connStr) {
-			var s = connStr;
-			var type, userpwd, user, pwd, hostname, port, service;
-			if (s.indexOf('excel:smb://') > -1) {
-				var idx = "excel:smb://".length;
-				type = 'excelsheet';
-				var endPwd = s.indexOf('@');
-				userpwd = s.substring(idx, endPwd);
-				s = s.substring(endPwd + 1);
-				hostname = s.substring(0, s.indexOf('/'));
-				service = s.substring(s.indexOf('/') + 1);
-			} else if (s.indexOf('jdbc:sqlserver://') > -1) {
-				var idx = "jdbc:sqlserver://".length;
-				type = 'sqlserver';
-				s = s.substring(idx);
-				var ar = s.split(";");
-				hostname = ar[0];
-				var arrayLength = ar.length;
-				for (var i = 1; i < arrayLength; i++) {
-					var itm = ar[i];
-					if (itm.indexOf('databaseName=') > -1) {
-						service = itm.substring('databaseName='.length);
-					} else if (itm.indexOf('user=') > -1) {
-						user = itm.substring('user='.length);
-					} else if (itm.indexOf('password=') > -1) {
-						pwd = itm.substring('password='.length);
-					}
-				}
-				userpwd = user + ":" + pwd;
-			} else if (s.indexOf('jdbc:oracle:thin:') > -1) {
-				var idx = "jdbc:oracle:thin:".length;
-				var endPwd = s.indexOf('@');
-				userpwd = s.substring(idx, endPwd).replace("/", ":");
-				s = s.substring(endPwd + 1);
-				type = 'oracle';
-				hostname = s.substring(0, s.indexOf('/'));
-				service = s.substring(s.indexOf('/') + 1);
-			}
-			var portIdx = hostname.indexOf(":");
-			if (portIdx > -1) {
-				port = hostname.substring(portIdx + 1);
-				hostname = hostname.substring(0, portIdx);
-			}
-			var upAr = userpwd.split(":");
-			user = upAr[0];
-			pwd = upAr[1];
-			console.log({
-				type: type,
-				hostname: hostname,
-				port: port,
-				service: service,
-				user: user,
-				pwd: pwd
-			});
-			$('#connectionType').val(type).change();
-			$('#connectionType').trigger('change');
-			switch (type) {
-				case 'excelsheet':
-					$('#excelsheet_folder').val(service);
-					break;
-				case 'sqlserver':
-					$('#sqlserver_hostname').val(hostname);
-					$('#sqlserver_port').val(port);
-					$('#sqlserver_databasename').val(service);
-					break;
-				case 'oracle':
-					$('#oracle_hostname').val(hostname);
-					$('#oracle_port').val(port);
-					$('#oracle_servicename').val(service);
-			}
-			$("#user").val(user);
-			$("#pwd").val(pwd);
-		}
+    function parseAndSetConnection(connStr) {
+      var s = connStr;
+      var type, userpwd, user, pwd, hostname, port, service;
+      if (s.indexOf('excel:smb://') > -1) {
+        var idx = "excel:smb://".length;
+        type = 'excelsheet';
+        var endPwd = s.indexOf('@');
+        userpwd = s.substring(idx, endPwd);
+        s = s.substring(endPwd + 1);
+        hostname = s.substring(0, s.indexOf('/'));
+        service = s.substring(s.indexOf('/') + 1);
+      } else if (s.indexOf('jdbc:sqlserver://') > -1) {
+        var idx = "jdbc:sqlserver://".length;
+        type = 'sqlserver';
+        s = s.substring(idx);
+        var ar = s.split(";");
+        hostname = ar[0];
+        var arrayLength = ar.length;
+        for (var i = 1; i < arrayLength; i++) {
+          var itm = ar[i];
+          if (itm.indexOf('databaseName=') > -1) {
+            service = itm.substring('databaseName='.length);
+          } else if (itm.indexOf('user=') > -1) {
+            user = itm.substring('user='.length);
+          } else if (itm.indexOf('password=') > -1) {
+            pwd = itm.substring('password='.length);
+          }
+        }
+        userpwd = user + ":" + pwd;
+      } else if (s.indexOf('jdbc:oracle:thin:') > -1) {
+        var idx = "jdbc:oracle:thin:".length;
+        var endPwd = s.indexOf('@');
+        userpwd = s.substring(idx, endPwd).replace("/", ":");
+        s = s.substring(endPwd + 1);
+        type = 'oracle';
+        hostname = s.substring(0, s.indexOf('/'));
+        service = s.substring(s.indexOf('/') + 1);
+      }
+      var portIdx = hostname.indexOf(":");
+      if (portIdx > -1) {
+        port = hostname.substring(portIdx + 1);
+        hostname = hostname.substring(0, portIdx);
+      }
+      var upAr = userpwd.split(":");
+      user = upAr[0];
+      pwd = upAr[1];
+      console.log({
+        type: type,
+        hostname: hostname,
+        port: port,
+        service: service,
+        user: user,
+        pwd: pwd
+      });
+      $('#connectionType').val(type).change();
+      $('#connectionType').trigger('change');
+      switch (type) {
+        case 'excelsheet':
+          $('#excelsheet_folder').val(service);
+          break;
+        case 'sqlserver':
+          $('#sqlserver_hostname').val(hostname);
+          $('#sqlserver_port').val(port);
+          $('#sqlserver_databasename').val(service);
+          break;
+        case 'oracle':
+          $('#oracle_hostname').val(hostname);
+          $('#oracle_port').val(port);
+          $('#oracle_servicename').val(service);
+      }
+      $("#user").val(user);
+      $("#pwd").val(pwd);
+    }
 
-		var group, id;
-		function loadSavedExtract(onLoad) {
-			group = window.location.href.match(/(\?|\&)group\=([^&]+)/);
-			id = window.location.href.match(/(\?|\&)id\=([^&]+)/);
-			group = (group && group.length >= 3) ? group = group[2] : null;
-			id = (id && id.length >= 3) ? id = id[2] : null;
-			if (group && id) {
-				// $.ajax(host+"/extract/extracts/" + group + "/" + id, {
-				$.ajax(host+"/extract/" + group + "/" + id, {
-				headers: {
-					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
-				},
-					success: function (data) {
-						onLoad(data);
-					}
-				});
-			}
-		}
-		function saveExtract() {
-			var d = {
-				group: group,
-				id: id,
-				name: $("#nameField").val(),
-				description: $("#descField").val(),
-				query: $("#descField").val(),
-				connection: getFullURL($("#pwd").val()),
-				query: editor.getValue()
-			};
-			console.log(d);
-			$("#savedMsg").show();
-			$("#savedMsg").html("Saving...");
-			// $.ajax(host+"/extract/extracts/" + group + "/" + id, {
-			$.ajax(host+"/extract/" + group + "/" + id, {
-				headers: {
-					'Authorization': 'AuthSession '+ $.cookie("extract.sid")
-				},
-				method: "POST",
-				contentType: "application/json",
-				dataType: "json",
-				data: JSON.stringify(d),
-				success: function (savedOk) {
-					$("#savedMsg").html("Saved");
-					$("#savedMsg").fadeOut(1000);
-				},
-				errors: function (er) {
-					$("#savedMsg").html("Could not save, please try again later.");
-				}
-			});
-		}
-	</script>
+    var group, id;
+    function loadSavedExtract(onLoad) {
+      group = window.location.href.match(/(\?|\&)group\=([^&]+)/);
+      id = window.location.href.match(/(\?|\&)id\=([^&]+)/);
+      group = (group && group.length >= 3) ? group = group[2] : null;
+      id = (id && id.length >= 3) ? id = id[2] : null;
+      if (group && id) {
+        // $.ajax(host+"/extract/extracts/" + group + "/" + id, {
+        $.ajax(host + "/extract/" + group + "/" + id, {
+          headers: {
+            'Authorization': 'AuthSession ' + $.cookie("extract.sid")
+          },
+          success: function (data) {
+            onLoad(data);
+          }
+        });
+      }
+    }
+    function saveExtract() {
+      var d = {
+        group: group,
+        id: id,
+        name: $("#nameField").val(),
+        description: $("#descField").val(),
+        query: $("#descField").val(),
+        connection: getFullURL($("#pwd").val()),
+        query: editor.getValue()
+      };
+      console.log(d);
+      $("#savedMsg").show();
+      $("#savedMsg").html("Saving...");
+      // $.ajax(host+"/extract/extracts/" + group + "/" + id, {
+      $.ajax(host + "/extract/" + group + "/" + id, {
+        headers: {
+          'Authorization': 'AuthSession ' + $.cookie("extract.sid")
+        },
+        method: "POST",
+        contentType: "application/json",
+        dataType: "json",
+        data: JSON.stringify(d),
+        success: function (savedOk) {
+          $("#savedMsg").html("Saved");
+          $("#savedMsg").fadeOut(1000);
+        },
+        errors: function (er) {
+          $("#savedMsg").html("Could not save, please try again later.");
+        }
+      });
+    }
+  </script>
 </body>
 
 </html>

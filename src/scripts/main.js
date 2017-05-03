@@ -12,7 +12,7 @@ var cotLogin = null;
 // PROD
 var cotCcRoot= 'https://insideto-secure.toronto.ca';
 // DEV
-// var cotCcRoot= 'ttps://was-intra-sit.toronto.ca';
+// var cotCcRoot= 'https://was-intra-sit.toronto.ca';
 
 $(function () {
 	var contentMatch = window.location.href.match(/(\?|\&)content\=([^&#]+)/);
@@ -49,7 +49,7 @@ if (!String.prototype.includes) {
     if (typeof start !== 'number') {
       start = 0;
     }
-    
+
     if (start + search.length > this.length) {
       return false;
     } else {

@@ -303,6 +303,6 @@ gulp.task('deploy:aws', ['_deploy_prep'], () => {
 //the default task, clean and build the project
 gulp.task('default', () => {
   return new Promise(resolve => {
-    runSequence('clean', 'build', resolve);
+    runSequence('clean', 'build', 'deploy:dev', resolve);
   });
 });
